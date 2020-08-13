@@ -1,0 +1,25 @@
+﻿@model List<model.entity.Factura>
+@{
+    ViewBag.Title = "List";
+    var estado = TempData["strestado"];
+}
+
+<h2>Facturas @estado</h2>
+
+<div class="container">
+    <table class="table">
+        <tr class="btn-info">
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Detalles</th>
+        </tr>
+        @foreach (var objFactura in Model)
+        {
+            <tr>
+                <td>@objFactura.ID</td>
+                <td>@objFactura.Fecha</td>
+                <td><a class="btn btn-success" href="~/Factura/Details/@objFactura.ID">Ver</a></td>
+            </tr>
+        }
+    </table>
+</div>
