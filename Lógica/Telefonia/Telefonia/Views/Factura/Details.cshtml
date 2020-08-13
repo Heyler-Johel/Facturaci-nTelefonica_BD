@@ -1,0 +1,34 @@
+﻿@model model.entity.Factura
+@{
+    ViewBag.Title = "Details";
+    List<string> detalles = new List<string> { "Uso de Megas", "Minutos 110", "Minutos 800", "Minutos 900" };
+    List<decimal> montos = new List<decimal> { Model.SaldoMega, Model.SaldoMins110, Model.SaldoMins800, Model.SaldoMins900 };
+    int i = 0;
+}
+
+<h2>Detalles de Factura</h2>
+
+<label>Fecha: @Model.Fecha</label><br>
+<label>Fecha de Pago: @Model.FechaAPagar</label><br>
+<label>ID: @Model.ID</label>
+
+<table class="table">
+    <tr class="btn-primary">
+        <th>Detalle</th>
+        <th>Monto</th>
+    </tr>
+    @foreach (string detalle in detalles)
+    {
+        if (@montos[i] != 0)
+        {
+            <tr>
+                <th>@detalle</th>
+                <th>@montos[i++]</th>
+            </tr>
+        }
+    }
+    <tr class="btn-danger">
+        <th>Total</th>
+        <th>@Model.SaldoTotalPa</th>
+    </tr>
+</table>
