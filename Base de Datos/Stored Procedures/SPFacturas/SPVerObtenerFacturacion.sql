@@ -3,7 +3,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		Kevin y Johel
+-- Author:		Kevin Fallas y Johel Mora
 -- Create date: 13/08/2020
 -- Description:	SP para obtener facturas de un número teléfonico
 -- =============================================
@@ -14,10 +14,7 @@ BEGIN
 	SET NOCOUNT ON;
 	BEGIN TRY
 		SELECT F.ID, F.Fecha FROM Factura AS F
-		INNER JOIN Detalle AS D ON D.IdFactura = F.ID
-		INNER JOIN ElementoDeTipoTarifa AS ETT ON ETT.ID = D.IdElementoTarifa
-		INNER JOIN TipoTarifa AS TT ON TT.ID = ETT.IdTipoTarifa
-		INNER JOIN Contrato AS C ON C.IdTipoTarifa = TT.ID
+		INNER JOIN Contrato AS C ON C.ID = F.IdContrato
 		WHERE @Tel = C.NumTelefono AND @Estado = F.Estado
 	END TRY
 	BEGIN CATCH

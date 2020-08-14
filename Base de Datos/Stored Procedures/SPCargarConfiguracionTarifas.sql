@@ -19,7 +19,8 @@ BEGIN
 
 		--Insercion de los tipos de CCobro
 		SELECT @Configuracion = Cf
-		FROM OPENROWSET (Bulk 'D:\Base de datos\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 
+		--FROM OPENROWSET (Bulk 'D:\Base de datos\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 
+		FROM OPENROWSET (Bulk 'C:\Users\Johel Mora\Desktop\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 
 
 		AS Configuracion(Cf);
 

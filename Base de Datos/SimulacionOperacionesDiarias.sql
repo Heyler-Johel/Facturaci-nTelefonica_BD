@@ -49,7 +49,8 @@ BEGIN
 
 	--Obtenemos informacion del XML
 	SELECT @DocumentoXML = DXML
-	FROM OPENROWSET (Bulk 'D:\Base de datos\FacturacionTelefonica_BD\Base de Datos\XML\Operaciones.xml', Single_BLOB) AS DocumentoXML(DXML)
+	--FROM OPENROWSET (Bulk 'D:\Base de datos\FacturacionTelefonica_BD\Base de Datos\XML\Operaciones.xml', Single_BLOB) AS DocumentoXML(DXML)
+	FROM OPENROWSET (Bulk 'C:\Users\Johel Mora\Desktop\FacturacionTelefonica_BD\Base de Datos\XML\Operaciones.xml', Single_BLOB) AS DocumentoXML(DXML)
 
 	BEGIN TRY
 		INSERT @FechasAProcesar (fecha)
