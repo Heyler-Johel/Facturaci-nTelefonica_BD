@@ -17,6 +17,7 @@ BEGIN
 		DBCC CHECKIDENT ('[RelacionFamiliar]', RESEED, 0) --reinicia identity
 
 	DELETE FROM [FacturacionTelefonica].[dbo].[ElementoDeTipoTarifa]
+		DBCC CHECKIDENT ('[RelacionFamiliar]', RESEED, 0) --reinicia identity
 
 	DELETE FROM [FacturacionTelefonica].[dbo].[TipoRelacion]
 
@@ -29,6 +30,6 @@ BEGIN
 		DBCC CHECKIDENT ('[Cliente]', RESEED, 0) 
 
 	DELETE FROM [FacturacionTelefonica].[dbo].[TipoTarifa]
-END
 
-EXEC ReiniciarTablas
+	DELETE FROM [FacturacionTelefonica].[dbo].[TipoMovimiento]
+END

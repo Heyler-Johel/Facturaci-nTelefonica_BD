@@ -1,5 +1,9 @@
 <configTarifas>
 
+<!--Movimientos-->
+<TipoMovimiento ID="1" Nombre="Debito"/>
+<TipoMovimiento ID="2" Nombre="Credito"/>
+
 <TipoRelacionFamiliar ID="1" Nombre="Paternidad o Maternidad"/>
 <TipoRelacionFamiliar ID="2" Nombre="Hermandad"/>
 

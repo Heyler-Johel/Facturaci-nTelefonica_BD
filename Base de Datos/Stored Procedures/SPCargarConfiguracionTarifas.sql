@@ -15,7 +15,6 @@ BEGIN
 	DECLARE @Configuracion XML
 
 	BEGIN TRY
-		
 
 		--Insercion de los tipos de CCobro
 		SELECT @Configuracion = Cf
@@ -23,6 +22,12 @@ BEGIN
 		FROM OPENROWSET (Bulk 'C:\Users\Johel Mora\Desktop\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 
 
 		AS Configuracion(Cf);
+
+		--Insertamos el tipo de Movimiento 
+		INSERT INTO [dbo].[TIpoMovimiento](ID, Nombre)
+		SELECT	tm.value('@ID', 'INT')
+			   ,tm.value('@Nombre', 'VARCHAR(100)')
+		FROM @Configuracion.nodes('/configTarifas/TipoMovimientp') AS t(tm);
 
 		--Insertamos el tipo de relacion familiar
 		INSERT INTO [dbo].[TipoRelacion](ID, Nombre)
