@@ -33,6 +33,7 @@ namespace Telefonia.Controllers
         public ActionResult Details(int ID)
         {
             Factura factura = new Factura(ID);
+            objFactura.find(factura);
             return View(factura);
         }
     }

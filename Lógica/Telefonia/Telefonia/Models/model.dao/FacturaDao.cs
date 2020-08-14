@@ -60,7 +60,7 @@ namespace model.dao
             bool hayRegistros;
             try
             {
-                comando = new SqlCommand("spVerPropiedad", objConexion.getConexion());
+                comando = new SqlCommand("spVerFactura", objConexion.getConexion());
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@ID", objetoFactura.ID);
                 objConexion.getConexion().Open();
@@ -72,11 +72,10 @@ namespace model.dao
                     objetoFactura.Fecha = read[1].ToString();
                     objetoFactura.FechaAPagar = read[2].ToString();
                     objetoFactura.SaldoMega = Convert.ToDecimal(read[3].ToString());
-                    objetoFactura.SaldoMinutos = Convert.ToDecimal(read[4].ToString());
-                    objetoFactura.SaldoMins110 = Convert.ToDecimal(read[5].ToString());
-                    objetoFactura.SaldoMins800 = Convert.ToDecimal(read[6].ToString());
-                    objetoFactura.SaldoMins900 = Convert.ToDecimal(read[7].ToString());
-                    objetoFactura.SaldoTotalPa = Convert.ToDecimal(read[8].ToString());
+                    objetoFactura.SaldoMins110 = Convert.ToDecimal(read[4].ToString());
+                    objetoFactura.SaldoMins800 = Convert.ToDecimal(read[5].ToString());
+                    objetoFactura.SaldoMins900 = Convert.ToDecimal(read[6].ToString());
+                    objetoFactura.SaldoTotalPa = Convert.ToDecimal(read[7].ToString());
                 }
             }
             catch (Exception)
