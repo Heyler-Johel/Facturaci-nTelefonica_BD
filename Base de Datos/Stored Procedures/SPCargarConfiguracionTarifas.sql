@@ -18,7 +18,8 @@ BEGIN
 		
         --Insercion de los tipos de CCobro
         SELECT @Configuracion = Cf
-        FROM OPENROWSET (Bulk 'D:\Base de datos\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 
+        --FROM OPENROWSET (Bulk 'D:\Base de datos\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 4
+		FROM OPENROWSET (Bulk 'C:\Users\Johel Mora\Desktop\FacturacionTelefonica_BD\Base de Datos\XML\configuracionTarifas.xml', Single_BLOB) 
 		AS Configuracion(Cf);
 
 		--Insertamos el tipo de relacion familiar
@@ -27,9 +28,10 @@ BEGIN
 			  ,	cf.value('@Nombre', 'VARCHAR(100)')
 		FROM @Configuracion.nodes('/configTarifas/TipoRelacionFamiliar') AS t(cf);
 		
-		INSERT INTO [dbo].[TipoTarifa](ID, Identificacion)
+		INSERT INTO [dbo].[TipoTarifa](ID, Nombre, Identificacion)
 		SELECT	tt.value('@ID','INT')
 			 ,	tt.value('@Nombre', 'VARCHAR(100)')
+			 ,  0
 		FROM @Configuracion.nodes('/configTarifas/TipoTarifa') AS t(tt);
 
 		INSERT INTO [dbo].[TipoElemento](ID, Nombre, TipoValor)
